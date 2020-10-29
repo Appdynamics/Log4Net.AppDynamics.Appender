@@ -16,7 +16,6 @@ namespace LogStashLog4Net
                 logger.InfoFormat($"Here is your log4net information entry {i}!");
             }
 
-/*
             try
             {
                 throw new Exception("Exception message is hardcoded");
@@ -25,9 +24,8 @@ namespace LogStashLog4Net
             {
                 logger.Error(null, e);
             }
-*/
 
-//            logger.Error(null, new Exception("Exception message is hardcoded"));
+            logger.Error(null, new Exception("Exception message is hardcoded"));
 
             Console.WriteLine("Press enter to exit..");
             Console.ReadLine();
