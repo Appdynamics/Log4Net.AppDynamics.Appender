@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace Log4net.Http.Appender
 {
-    public class HttpAppender: AppenderSkeleton
+    public abstract class HttpAppender: AppenderSkeleton
     {
         protected static readonly string MachineName = Dns.GetHostName();
 
@@ -130,16 +130,16 @@ namespace Log4net.Http.Appender
                 {
                     HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Post, HttpEndpoint + "/events/publish/" + AppdSchemaName + "/");
                     
+                    // Need to set AppDynamics headers for content
                     MediaTypeHeaderValue AppdJsonMediaType = null;
+
+                    // AppDynamics requires a custom content type 
                     MediaTypeHeaderValue.TryParse(AppdContentType, out AppdJsonMediaType);
                     req.Content = new StringContent(content, Encoding.UTF8 );
-                    req.Content.Headers.ContentType = AppdJsonMediaType;   
-                    // req.Content.Headers.Add("Content-type", AppdContentType);         
+                    req.Content.Headers.ContentType = AppdJsonMediaType;     
+
                     req.Content.Headers.Add("X-Events-API-AccountName", AppdGlobalAccount);
                     req.Content.Headers.Add("X-Events-API-Key", AppdApiKey);
-
-
-                    // HttpContent httpContent = new StringContent(content, Encoding.UTF8);
     
                     response = await Client
                         .SendAsync(req)
