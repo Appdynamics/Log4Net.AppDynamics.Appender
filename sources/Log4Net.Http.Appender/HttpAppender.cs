@@ -94,12 +94,12 @@ namespace Log4net.Http.Appender
 
             var entry = new LogEntry
             {
-                Timestamp = loggingEvent.TimeStamp.ToUniversalTime(),
+                EntryTimestamp = loggingEvent.TimeStamp.ToUniversalTime(),
                 RenderedMessage = loggingEvent.RenderedMessage,
                 Level = loggingEvent.Level.Name,
                 MachineName = machineName,
                 SourceContext = loggingEvent.LoggerName,
-                Properties = properties,
+                Properties = string.Join(Environment.NewLine, properties),
                 Exception = exception
             };
 
@@ -128,8 +128,21 @@ namespace Log4net.Http.Appender
                 HttpResponseMessage response = null;
                 try
                 {
+                    HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Post, HttpEndpoint + "/events/publish/" + AppdSchemaName + "/");
+                    
+                    MediaTypeHeaderValue AppdJsonMediaType = null;
+                    MediaTypeHeaderValue.TryParse(AppdContentType, out AppdJsonMediaType);
+                    req.Content = new StringContent(content, Encoding.UTF8 );
+                    req.Content.Headers.ContentType = AppdJsonMediaType;   
+                    // req.Content.Headers.Add("Content-type", AppdContentType);         
+                    req.Content.Headers.Add("X-Events-API-AccountName", AppdGlobalAccount);
+                    req.Content.Headers.Add("X-Events-API-Key", AppdApiKey);
+
+
+                    // HttpContent httpContent = new StringContent(content, Encoding.UTF8);
+    
                     response = await Client
-                        .PostAsync(HttpEndpoint + "/events/schema/" + AppdSchemaName + "/", new StringContent(content, Encoding.UTF8, "application/json"))
+                        .SendAsync(req)
                         .ConfigureAwait(false);
 
                     if (response.IsSuccessStatusCode)

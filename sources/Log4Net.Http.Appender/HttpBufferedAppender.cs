@@ -36,9 +36,9 @@ namespace Log4net.Http.Appender
 
             _messages = new BlockingCollection<LogEntry>(MaxItemsInMemory);
 
-            Client.DefaultRequestHeaders.Add("X-Events-API-AccountName", AppdGlobalAccount);
-            Client.DefaultRequestHeaders.Add("X-Events-API-Key", AppdApiKey);
-            Client.DefaultRequestHeaders.TryAddWithoutValidation("Content-type", AppdContentType);
+            //Client.DefaultRequestHeaders.Add("X-Events-API-AccountName", AppdGlobalAccount);
+            //Client.DefaultRequestHeaders.Add("X-Events-API-Key", AppdApiKey);
+            //Client.DefaultRequestHeaders.TryAddWithoutValidation("Content-type", AppdContentType);
             
         }
 
