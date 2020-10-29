@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using log4net.Appender;
@@ -25,9 +26,33 @@ namespace Log4net.Http.Appender
         /// <summary>
         /// Specifies HTTP endpoint to which send a POST request with collected events
         /// </summary>
-        /// <remarks>Default: http://localhost:30001</remarks>
-        public string HttpEndpoint { get; set; } = "http://localhost:30001";
+        /// <remarks>Default: http://localhost:9080</remarks>
+        public string HttpEndpoint { get; set; } = "http://localhost:9080";
 
+        /// <summary>
+        /// Specifies the custom event schema for the log entries
+        /// </summary>
+        /// <remarks>Default: log4net_entry</remarks>
+        public string AppdSchemaName { get; set; } = "log4net_entry";
+
+        /// <summary>
+        /// Specifies AppDynamics Global AccountName
+        /// </summary>
+        /// <remarks>Default: ""</remarks>
+        public string AppdGlobalAccount { get; set; } = "";
+
+        /// <summary>
+        /// Specifies AppDynamics Api-key
+        /// </summary>
+        /// <remarks>Default: ""</remarks>
+        public string AppdApiKey { get; set; } = "";       
+        
+        /// <summary>
+        /// Specifies AppDynamics event content type
+        /// </summary>
+        /// <remarks>Default: "application/vnd.appd.events+json;v=2"</remarks>
+        public string AppdContentType { get; set; } = "application/vnd.appd.events+json;v=2";       
+        
         /// <summary>
         /// When HTTP endpoint is not available - how many retries to do before throwing events away
         /// </summary>
@@ -104,7 +129,7 @@ namespace Log4net.Http.Appender
                 try
                 {
                     response = await Client
-                        .PostAsync(HttpEndpoint, new StringContent(content, Encoding.UTF8, "application/json"))
+                        .PostAsync(HttpEndpoint + "/events/schema/" + AppdSchemaName + "/", new StringContent(content, Encoding.UTF8, "application/json"))
                         .ConfigureAwait(false);
 
                     if (response.IsSuccessStatusCode)
@@ -142,7 +167,7 @@ namespace Log4net.Http.Appender
 
         private static string FormatContent(LogEntry[] entries)
         {
-            var content = "{\"events\":" + JsonConvert.SerializeObject(entries, Formatting.None, SerializerSettings) + "}";
+            var content = JsonConvert.SerializeObject(entries, Formatting.None, SerializerSettings);
             return content;
         }
     }

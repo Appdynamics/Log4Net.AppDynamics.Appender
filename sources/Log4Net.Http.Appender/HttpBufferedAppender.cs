@@ -35,6 +35,11 @@ namespace Log4net.Http.Appender
                 MaxItemsInMemory = 10240;
 
             _messages = new BlockingCollection<LogEntry>(MaxItemsInMemory);
+
+            Client.DefaultRequestHeaders.Add("X-Events-API-AccountName", AppdGlobalAccount);
+            Client.DefaultRequestHeaders.Add("X-Events-API-Key", AppdApiKey);
+            Client.DefaultRequestHeaders.TryAddWithoutValidation("Content-type", AppdContentType);
+            
         }
 
         protected override Task EnqueueAsync(LogEntry entry)
