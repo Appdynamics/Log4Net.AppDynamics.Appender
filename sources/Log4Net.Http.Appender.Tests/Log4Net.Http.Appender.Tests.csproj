@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.10" />
+    <PackageReference Include="log4net" Version="2.0.12" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Log4Net.Http.Appender\Log4net.Http.Appender.csproj" />
