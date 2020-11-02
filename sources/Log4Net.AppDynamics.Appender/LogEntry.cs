@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Log4net.Http.Appender
+namespace Log4net.AppDynamics.Appender
 {
     public class LogEntry
     {

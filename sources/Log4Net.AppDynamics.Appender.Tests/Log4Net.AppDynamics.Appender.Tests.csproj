@@ -7,6 +7,6 @@
     <PackageReference Include="log4net" Version="2.0.12" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Log4Net.Http.Appender\Log4net.Http.Appender.csproj" />
+    <ProjectReference Include="..\Log4Net.AppDynamics.Appender\Log4net.AppDynamics.Appender.csproj" />
   </ItemGroup>
 </Project>

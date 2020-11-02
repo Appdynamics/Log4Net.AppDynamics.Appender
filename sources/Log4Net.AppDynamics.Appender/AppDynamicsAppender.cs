@@ -10,9 +10,9 @@ using log4net.Appender;
 using log4net.Core;
 using Newtonsoft.Json;
 
-namespace Log4net.Http.Appender
+namespace Log4net.AppDynamics.Appender
 {
-    public abstract class HttpAppender: AppenderSkeleton
+    public abstract class AppDynamicsAppender: AppenderSkeleton
     {
         protected static readonly string MachineName = Dns.GetHostName();
 

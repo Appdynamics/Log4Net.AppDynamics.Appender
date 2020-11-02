@@ -3,9 +3,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Log4net.Http.Appender
+namespace Log4net.AppDynamics.Appender
 {
-    public class HttpBufferedAppender: HttpAppender
+    public class AppDynamicsBufferedAppender: AppDynamicsAppender
     {
         private readonly BlockingCollection<LogEntry> _messages;
 
@@ -27,7 +27,7 @@ namespace Log4net.Http.Appender
         /// <remarks>Default: 200 milliseconds</remarks>
         public TimeSpan BatchSleepTime { get; set; } = TimeSpan.FromMilliseconds(200);
 
-        public HttpBufferedAppender()
+        public AppDynamicsBufferedAppender()
         {
             Task.Factory.StartNew(Send, TaskCreationOptions.LongRunning);
 
