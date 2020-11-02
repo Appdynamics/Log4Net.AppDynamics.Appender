@@ -1,6 +1,8 @@
 # Log4Net.AppDynamics.Appender
 
-Installation:
+This project provides the log4net appender library for AppDynamics. You can use the library to send all of your logs to AppDynamics from log4net calls. The log messages are buffered in memory and sent to AppDynamics with bulk requests.
+
+## Installation:
 ```
 dotnet add reference <path of Log4Net.AppDynamics.Appender project file>
 ```
@@ -8,7 +10,15 @@ dotnet add reference <path of Log4Net.AppDynamics.Appender project file>
 ```
 (Nuget package pending)
 ```
-To use AppDynamicsAppender just add AppDynamics event service, credential and program settings to your log4net config file:
+## Setup:
+
+Use the following command to create the log entry schema in AppDynamics
+```
+curl "http(s)://<appd_event_host_name>(:<event_services_port>)/events/schema/<schema_name>" -H"X-Events-API-AccountName:<global_account_name>" -H"X-Events-API-Key:<api_key>" -H"Content-type: application/vnd.appd.events+json;v=2" -d "{ \"schema\": { \"EntryTimestamp\": \"date\", \"Level\": \"string\", \"SourceContext\": \"string\", \"MachineName\": \"string\", \"RenderedMessage\": \"string\", \"Properties\": \"string\",\"Exception\": \"string\" } }"
+
+```
+## Usage
+To use AppDynamicsAppender, just add AppDynamics event service, credential and program settings to your log4net config file:
 
 ```
 <appender name="AppDynamicsAppender" type="Log4net.AppDynamics.Appender.AppDynamicsBufferedAppender, Log4net.AppDynamics.Appender">
