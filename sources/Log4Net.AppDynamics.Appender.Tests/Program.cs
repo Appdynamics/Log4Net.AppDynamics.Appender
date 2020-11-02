@@ -1,6 +1,6 @@
 using System;
 
-namespace LogStashLog4Net
+namespace AppDynamicsLog4Net
 {
     class Program
     {
@@ -8,7 +8,7 @@ namespace LogStashLog4Net
         {
             log4net.Config.XmlConfigurator.Configure();
 
-            var logger = log4net.LogManager.GetLogger("Logstash.Logger");
+            var logger = log4net.LogManager.GetLogger("AppDynamics.Logger");
 
             for (int i = 0; i < 12000; i++)
             {
