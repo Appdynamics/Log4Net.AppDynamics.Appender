@@ -24,10 +24,10 @@ namespace Log4net.AppDynamics.Appender
         protected static readonly HttpClient Client = new HttpClient();
 
         /// <summary>
-        /// Specifies HTTP endpoint to which send a POST request with collected events
+        /// Specifies AppDynamics Event Service endpoint to which send a POST request with collected events
         /// </summary>
         /// <remarks>Default: http://localhost:9080</remarks>
-        public string HttpEndpoint { get; set; } = "http://localhost:9080";
+        public string AppdEndpoint { get; set; } = "http://localhost:9080";
 
         /// <summary>
         /// Specifies the custom event schema for the log entries
@@ -128,7 +128,7 @@ namespace Log4net.AppDynamics.Appender
                 HttpResponseMessage response = null;
                 try
                 {
-                    HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Post, HttpEndpoint + "/events/publish/" + AppdSchemaName + "/");
+                    HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Post, AppdEndpoint + "/events/publish/" + AppdSchemaName + "/");
                     
                     // Need to set AppDynamics headers for content
                     MediaTypeHeaderValue AppdJsonMediaType = null;

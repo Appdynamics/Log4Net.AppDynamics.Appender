@@ -1,41 +1,35 @@
-# Log4Net.Http.Appender
+# Log4Net.AppDynamics.Appender
 
 Installation:
 ```
-dotnet add package Log4Net.Http.Appender
+dotnet add reference <path of Log4Net.AppDynamics.Appender project file>
 ```
-OR
+    OR
 ```
-Install-Package Log4Net.Http.Appender
+Nuget package pending
 ```
-
-To use HttpAppender just add the appender to your log4net config file:
-
-```
-<appender name="CustomHttpAppender" type="Log4net.Http.Appender.HttpAppender, Log4net.Http.Appender">
-    <HttpEndpoint>http://localhost:30000</HttpEndpoint>
-    <ErrorMaxRetries>10</ErrorMaxRetries>
-    <ErrorSleepTime>00:00:00.200</ErrorSleepTime>
-</appender>
-```
-
-To use HttpBufferedAppender just add the appender to your log4net config file:
+To use AppDynamicsAppender just add AppDynamics Controller, credential and program settings to your log4net config file:
 
 ```
-<appender name="CustomHttpAppender" type="Log4net.Http.Appender.HttpBufferedAppender, Log4net.Http.Appender">
-    <HttpEndpoint>http://localhost:30000</HttpEndpoint>
-    <ErrorMaxRetries>10</ErrorMaxRetries>
-    <ErrorSleepTime>00:00:00.200</ErrorSleepTime>
-    <MaxItemsInMemory>10240</MaxItemsInMemory>
-    <BatchMaxSize>10</BatchMaxSize>
-    <BatchSleepTime>00:00:00.200</BatchSleepTime>
-</appender>
+    <appender name="AppDynamicsAppender" type="Log4net.AppDynamics.Appender.AppDynamicsBufferedAppender, Log4net.AppDynamics.Appender">
+        <HttpEndpoint>http://localhost:9080</HttpEndpoint>
+        <AppdSchemaName>log4net_entry</AppdSchemaName>
+        <AppdGlobalAccount>customer1_xxxx-xxxx-xxxxxx-xxxxxxx</AppdGlobalAccount>
+        <AppdApiKey>xxxxx-xxxxx-xxxxx-xxxxx-xxxxx</AppdApiKey>
+        <AppdContentType>application/vnd.appd.events+json;v=2</AppdContentType>               
+        <ErrorMaxRetries>10</ErrorMaxRetries>
+        <ErrorSleepTime>00:00:00.200</ErrorSleepTime>
+        <BatchMaxSize>100</BatchMaxSize>
+        <BatchSleepTime>00:00:00.200</BatchSleepTime>
+    </appender>
 ```
 
 Include appender to your logger:
 ```
 <root>
     <level value="ALL" />
-    <appender-ref ref="CustomHttpAppender" />
+    <appender-ref ref="AppDynamicsAppender" />
 </root>
 ```
+
+See Log4Net.AppDynamics.Appender.Tests
