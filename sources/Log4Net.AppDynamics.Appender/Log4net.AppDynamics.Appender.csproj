@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
+    <PackageId>AppDynamics.Log4NetAppender</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Charles J. Lin</Authors>
+    <Company>AppDynamics</Company>
+    <Description>AppDynamics Log4Net Appender is a customer appender allowing you to send Log4Net log 
+    messages to AppDynamics. AppDynamics will collect your logs from multiple sources and provide rich 
+    powerful search and analytic capabilities.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
