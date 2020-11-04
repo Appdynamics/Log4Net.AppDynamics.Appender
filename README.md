@@ -1,6 +1,6 @@
 # Log4Net.AppDynamics.Appender
 
-This project provides the log4net appender library for AppDynamics. You can use the library to send all of your logs to AppDynamics from log4net calls. The log messages are buffered in memory and sent to AppDynamics with bulk requests.
+This project provides the log4net appender library for AppDynamics. You can use the library to send all of your logs to AppDynamics from log4net calls. The log messages are buffered in memory and sent to AppDynamics with bulk requests. AppDynamics will collect your logs from multiple sources and provide rich powerful search and analytic capabilities.
 
 ## Installation:
 ```
@@ -8,7 +8,7 @@ dotnet add reference <path of Log4Net.AppDynamics.Appender project file>
 ```
     OR
 ```
-(Nuget package pending)
+dotnet add package AppDynamics.Log4NetAppender --version 1.0.0
 ```
 ## Setup:
 
@@ -42,4 +42,6 @@ Include appender to your logger:
 </root>
 ```
 
-See test code: [Log4Net.AppDynamics.Appender.Tests](https://github.com/charleslin-appd/Log4Net.AppDynamics.Appender/tree/master/sources/Log4Net.AppDynamics.Appender.Tests)
+See test code: 
+- [Log4Net.AppDynamics.Appender.Tests](https://github.com/charleslin-appd/Log4Net.AppDynamics.Appender/tree/master/sources/Log4Net.AppDynamics.Appender.Tests)
+- [Log4Net.AppDynamics.Appender.Aspnet.Tests](https://github.com/charleslin-appd/Log4Net.AppDynamics.Appender/tree/master/sources/Log4Net.AppDynamics.Appender.Aspnet.Tests)
