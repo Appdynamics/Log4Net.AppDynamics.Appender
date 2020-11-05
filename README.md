@@ -43,5 +43,5 @@ Include appender to your logger:
 ```
 
 See test code: 
-- [Log4Net.AppDynamics.Appender.Tests](https://github.com/charleslin-appd/Log4Net.AppDynamics.Appender/tree/master/sources/Log4Net.AppDynamics.Appender.Tests)
-- [Log4Net.AppDynamics.Appender.Aspnet.Tests](https://github.com/charleslin-appd/Log4Net.AppDynamics.Appender/tree/master/sources/Log4Net.AppDynamics.Appender.Aspnet.Tests)
+- [Log4Net.AppDynamics.Appender.Tests](https://github.com/Appdynamics/Log4Net.AppDynamics.Appender/tree/master/sources/Log4Net.AppDynamics.Appender.Tests)
+- [Log4Net.AppDynamics.Appender.Aspnet.Tests](https://github.com/Appdynamics/Log4Net.AppDynamics.Appender/tree/master/sources/Log4Net.AppDynamics.Appender.Aspnet.Tests)
