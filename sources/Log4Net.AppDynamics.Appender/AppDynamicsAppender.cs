@@ -163,7 +163,7 @@ namespace Log4net.AppDynamics.Appender
                     {
                         if (response?.Content != null)
                         {
-                            System.Diagnostics.Trace.WriteLine(response.Content.ToString());
+                            System.Diagnostics.Trace.WriteLine(response.Content.ToString() + ": " + response.ReasonPhrase);
                         }
                         break;
                     }
