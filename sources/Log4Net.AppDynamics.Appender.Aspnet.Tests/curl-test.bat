@@ -1,3 +1,4 @@
+echo Test script to send 1000 requests
 @echo off
 
 set countfiles=1000
