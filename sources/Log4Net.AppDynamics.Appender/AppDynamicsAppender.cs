@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace Log4net.AppDynamics.Appender
 {
-    public abstract class AppDynamicsAppender: AppenderSkeleton
+    public class AppDynamicsAppender: AppenderSkeleton
     {
         protected static readonly string MachineName = Dns.GetHostName();
 
