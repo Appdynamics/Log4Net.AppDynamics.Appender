@@ -29,7 +29,7 @@ namespace Log4net.AppDynamics.Appender
 
         public AppDynamicsBufferedAppender()
         {
-            Task.Factory.StartNew(Send, TaskCreationOptions.LongRunning);
+            Task.Factory.StartNew(Send, TaskCreationOptions.RunContinuationsAsynchronously);
 
             if (MaxItemsInMemory <= 0)
                 MaxItemsInMemory = 10240;
