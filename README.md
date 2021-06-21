@@ -8,7 +8,7 @@ dotnet add reference <path of Log4Net.AppDynamics.Appender project file>
 ```
     OR
 ```
-dotnet add package AppDynamics.Log4NetAppender --version 1.0.0
+dotnet add package AppDynamics.Log4NetAppender --version 1.0.1
 ```
 ## Setup:
 
