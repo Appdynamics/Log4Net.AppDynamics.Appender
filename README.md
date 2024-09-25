@@ -1,3 +1,6 @@
+# NOTE:
+## This repository is no longer supported
+
 # Log4Net.AppDynamics.Appender
 
 This project provides the log4net appender library for AppDynamics. You can use the library to send all of your logs to AppDynamics from log4net calls. The log messages are buffered in memory and sent to AppDynamics with bulk requests. AppDynamics will collect your logs from multiple sources and provide rich powerful search and analytic capabilities.
