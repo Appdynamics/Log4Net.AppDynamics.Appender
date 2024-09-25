@@ -1,5 +1,10 @@
 # NOTE:
-## This repository is no longer supported
+## This repository is no longer supported and has been archived
+
+
+
+
+
 
 # Log4Net.AppDynamics.Appender
 
